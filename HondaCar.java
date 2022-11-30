@@ -1,11 +1,10 @@
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.util.Random;
 
-public class ActualCar extends Vehicle {
+public class HondaCar extends Vehicle {
     Honda car1 = new Honda(2002, 100000, "Honda", "Accord");
     public static ArrayList<Honda> cars = new ArrayList<>(3);
 

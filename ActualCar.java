@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.util.Random;
-public class ActualCar extends Vehicle{
+
+public class ActualCar extends Vehicle {
     Honda car1 = new Honda(2002, 100000, "Honda", "Accord");
     public static ArrayList<Honda> cars = new ArrayList<>(3);
 
-    public static void something(String fileName){
-    File honda = new File(fileName);
-    Scanner in;
-    int[] year = new int [3], prices = new int[3];
-    String[] make = new String[3];
-    String[] model = new String[3];
-
+    public static void something(String fileName) {
+        File honda = new File(fileName);
+        Scanner in;
+        int[] year = new int[3], prices = new int[3];
+        String[] make = new String[3];
+        String[] model = new String[3];
 
 
         {
@@ -60,12 +60,12 @@ public class ActualCar extends Vehicle{
             }
         }
 
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             Honda car1 = new Honda(year[i], prices[i], make[i], model[i]);
-           cars.add(car1);
+            cars.add(car1);
         }
 
-        for(Honda aCar: cars){
+        for (Honda aCar : cars) {
             System.out.println(aCar.getYear());
             System.out.println(aCar.getPrice());
             System.out.println(aCar.getMake());
@@ -85,6 +85,21 @@ public class ActualCar extends Vehicle{
         System.out.println(cars.get(randNum).getModel());
 
         //return randNum;
+    }
+
+    @Override
+    public void sortPrice(int min, int max) {
+
+    }
+
+    @Override
+    public void sortYear() {
+
+    }
+
+    @Override
+    public void soldCar(int price, int year, String model) {
+
     }
 
 }

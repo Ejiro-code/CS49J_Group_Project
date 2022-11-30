@@ -1,0 +1,3 @@
+2018,50000,Highlander
+2018,100000,Lexus
+2007,20000,Corolla

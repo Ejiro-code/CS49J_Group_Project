@@ -30,7 +30,7 @@ public class mainWindow implements ActionListener {
         if(e.getSource() == search){
             String text = brand.getText();
 
-            if(text.equals("Toyota")){
+            if(text.equals("ToyotaCar")){
                 actualShop shop = new actualShop();
                 System.out.println("We made it");
             }

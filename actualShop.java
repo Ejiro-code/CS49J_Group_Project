@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class actualShop {
-    Toyota vehicle = new Toyota();
+    ToyotaCar vehicle = new ToyotaCar();
     JFrame frame = new JFrame();
-    JLabel toyota = new JLabel("Welcome to Toyota");
+    JLabel toyota = new JLabel("Welcome to ToyotaCar");
     JLabel options = new JLabel("Please select from one of the following: ");
 
 

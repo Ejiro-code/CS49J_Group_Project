@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        ToyotaCar j = new ToyotaCar();
+        Toyota j = new Toyota();
         j.something("toyota.txt");
         j.randomCar();
 

@@ -48,7 +48,13 @@ public class Ford extends Vehicle{
     }
 
     @Override
-    public void sortPrice(int min, int max) {
+    public String[] allCars() {
+        return new String[0];
+    }
+
+    @Override
+    public String[] sortPrice(int min, int max) {
+        return new String[0];
     }
 
     @Override

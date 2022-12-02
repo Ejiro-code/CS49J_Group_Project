@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class Chevy extends Vehicle{
 
+    ChevyPriceTree priceTree = new ChevyPriceTree();
+    ChevyAgeTree ageTree = new ChevyAgeTree();
+
     @Override
     public void randomCar() {
 
@@ -26,6 +29,9 @@ public class Chevy extends Vehicle{
     public void soldCar(int price, int year, String model) {
         ChevyCar temp = new ChevyCar(year, price, model);
         addCar(temp);
+        ChevyNode tempNode = new ChevyNode(temp);
+        priceTree.add(tempNode);
+        ageTree.add(tempNode);
     }
 
     private void addCar(ChevyCar temp) {

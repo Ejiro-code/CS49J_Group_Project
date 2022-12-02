@@ -46,12 +46,10 @@ public class Ford extends Vehicle{
         System.out.println(cars.get(randNum).getModel());
 
     }
-
     @Override
     public String[] allCars() {
         String[] info = new String[cars.size()];
         String eachCar = null;
-
 
         for(int i = 0; i < cars.size(); i++){
             eachCar = "Year: " + cars.get(i).getYear() + "Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
@@ -59,10 +57,21 @@ public class Ford extends Vehicle{
         }
         return info;
     }
-
     @Override
     public String[] sortPrice(int min, int max) {
-        return new String[0];
+        ArrayList<String> carArray = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            String car = null;
+            if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
+                car = cars.get(i).getPrice() + cars.get(i).getYear() + cars.get(i).getModel();
+                carArray.add(car);
+            }
+        }
+        String[] car1 = new String[carArray.size()];
+        for (int i = 0; i < carArray.size(); i++) {
+            car1[i] = carArray.get(i);
+        }
+        return car1;
     }
 
     @Override
@@ -78,6 +87,6 @@ public class Ford extends Vehicle{
 
     @Override
     public void soldCar(int price, int year, String model) {
-
+        
     }
 }

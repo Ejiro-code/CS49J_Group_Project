@@ -49,7 +49,15 @@ public class Ford extends Vehicle{
 
     @Override
     public String[] allCars() {
-        return new String[0];
+        String[] info = new String[cars.size()];
+        String eachCar = null;
+
+
+        for(int i = 0; i < cars.size(); i++){
+            eachCar = "Year: " + cars.get(i).getYear() + "Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
+            info[i] = eachCar;
+        }
+        return info;
     }
 
     @Override

@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Toyota extends Vehicle{
-    //ToyotaCar car1 = new Honda(2002, 100000, "Honda", "Accord");
     public static ArrayList<ToyotaCar> cars = new ArrayList<>(3);
 
     public static void something(String fileName){
@@ -17,8 +16,6 @@ public class Toyota extends Vehicle{
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
-            int counter1 = 0, counter2 = 0, count3 = 0, count4 = 0;
 
             while (in.hasNextLine()) {
                 ToyotaCar car1 = new ToyotaCar();
@@ -47,10 +44,25 @@ public class Toyota extends Vehicle{
 
     }
 
+    public String[] allCars(){
+        String[] info = new String[cars.size()];
+        String eachCar = null;
+        int year = 0;
+        int price = 0;
 
+        for(int i = 0; i < cars.size(); i++){
+            year = cars.get(i).getYear();
+            price = cars.get(i).getPrice();
+            eachCar = "Car " + (i+1) + ": " + cars.get(i).getModel() + " ";
+            eachCar += String.valueOf(year) + " " + String.valueOf(price);
+
+            info[i] = eachCar;
+        }
+        return info;
+    }
     public void randomCar() {
         Random rand = new Random();
-        int randNum = rand.nextInt(3);
+        int randNum = rand.nextInt(cars.size());
         System.out.println(cars.get(randNum).getYear());
         System.out.println(cars.get(randNum).getPrice());
         //System.out.println(cars.get(randNum).getMake());
@@ -60,12 +72,21 @@ public class Toyota extends Vehicle{
     }
 
     @Override
-    public void sortPrice(int min, int max) {
+    public String[] sortPrice(int min, int max) {
+        ArrayList<String> initialArr = new ArrayList<>();
+        String word = null;
         for(int i = 0; i < cars.size(); i++){
             if(cars.get(i).getPrice() >= min && cars.get(i).getPrice() <= max){
-                System.out.println(cars.get(i).getModel() + " " + cars.get(i).getYear());
+                word = cars.get(i).getPrice() + "~  " +cars.get(i).getModel() + " " + cars.get(i).getYear();
+                initialArr.add(word);
             }
+
         }
+        String[] p = new String[initialArr.size()];
+        for(int i = 0; i < initialArr.size(); i++){
+            p[i] = initialArr.get(i);
+        }
+        return p;
     }
 
     @Override

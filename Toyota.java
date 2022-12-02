@@ -47,15 +47,10 @@ public class Toyota extends Vehicle{
     public String[] allCars(){
         String[] info = new String[cars.size()];
         String eachCar = null;
-        int year = 0;
-        int price = 0;
+
 
         for(int i = 0; i < cars.size(); i++){
-            year = cars.get(i).getYear();
-            price = cars.get(i).getPrice();
-            eachCar = "Car " + (i+1) + ": " + cars.get(i).getModel() + " ";
-            eachCar += String.valueOf(year) + " " + String.valueOf(price);
-
+            eachCar = "Year: " + cars.get(i).getYear() + "Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
             info[i] = eachCar;
         }
         return info;

@@ -87,6 +87,17 @@ public class Ford extends Vehicle{
 
     @Override
     public void soldCar(int price, int year, String model) {
-        
+        FordCar car = new FordCar();
+        car.setModel(model);
+        car.setPrice(price);
+        car.setYear(year);
+
+        ArrayList<String> carArray = new ArrayList<>();
+        for (int i = 0; i < carArray.size(); i++) {
+            String c = null;
+
+
+        }
+        //create a new ford car and set the values that the user gives and put info in the same car arraylist and write that back to the file.
     }
 }

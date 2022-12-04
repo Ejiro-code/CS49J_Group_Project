@@ -4,7 +4,7 @@ import java.util.*;
 public class Toyota extends Vehicle{
     public static ArrayList<ToyotaCar> cars = new ArrayList<>();
 
-    public static void something(String fileName){
+    public Toyota(String fileName){
         File toyota = new File(fileName);
         Scanner in;
 

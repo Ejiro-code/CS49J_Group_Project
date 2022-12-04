@@ -1,10 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        Toyota j = new Toyota();
-        HondaCar s = new HondaCar();
+        Honda s = new Honda();
+        Ford f = new Ford();
+        Chevy c = new Chevy();
 
-        j.something("toyota.txt");
-        j.randomCar();
+        //When Niko and Ashton wrap up their methods, they can uncomment the next two lines respectively
+        //s.something("honda.txt");
+        //f.something("ford.txt");
+        //Dean doesn't have a method that reads the file as of yet
         mainWindow win = new mainWindow();
     }
 }

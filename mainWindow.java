@@ -69,6 +69,12 @@ public class mainWindow implements ActionListener {
         else if(e.getSource() == Honda){
             actualShop shop = new actualShop(1);
         }
+        else if(e.getSource() == Ford){
+            actualShop shop = new actualShop(2);
+        }
+        else if(e.getSource() == Chevrolet){
+            actualShop shop = new actualShop(3);
+        }
 
 
     }

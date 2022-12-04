@@ -5,7 +5,6 @@ public class Main {
         //s.something("hondacars.txt");
         j.something("toyota.txt");
         j.randomCar();
-        j.sortYear();
         mainWindow win = new mainWindow();
     }
 }

@@ -14,7 +14,6 @@ public class mainWindow implements ActionListener {
     JRadioButton Chevrolet = new JRadioButton("Chevrolet");
     JLabel carName = new JLabel("Car Brand:");
     JTextField brand = new JTextField();
-
     public mainWindow() {
         //carName.setBounds(60, 100, 75, 25);
         //brand.setBounds(135, 100, 120, 25);

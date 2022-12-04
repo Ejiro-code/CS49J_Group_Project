@@ -113,7 +113,6 @@ public class actualShop implements ActionListener {
         mainWin.add(enter);
         mainWin.revalidate();
         mainWin.repaint();
-
     }
     public void sortPrice(int min, int max){
         //Toyota vehicles = new Toyota();

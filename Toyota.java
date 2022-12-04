@@ -37,7 +37,6 @@ public class Toyota extends Vehicle{
                     String current = readLine.next();
                     car1.setModel(current);
                 }
-
                 cars.add(car1);
             }
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Chevy extends Vehicle{
@@ -13,8 +14,19 @@ public class Chevy extends Vehicle{
     File chevyFile = new File("chevy.txt");
 
     @Override
-    public void randomCar() {
-
+    public int randomCar() {
+        try {
+            Scanner s = new Scanner(chevyFile);
+            int size = 0;
+            while (s.hasNextLine()){
+                size++;
+            }
+            Random r = new Random();
+            return r.nextInt(size-1);
+        } catch(FileNotFoundException e) {
+            System.out.println("File not found");
+            return 0;
+        }
     }
 
     @Override

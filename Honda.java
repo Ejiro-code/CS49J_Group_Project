@@ -55,7 +55,7 @@ public class Honda extends Vehicle {
         }
 
         return hondaInfo;
-    } 
+    }
 
     public int randomCar() {
         File hondaList = new File("honda.txt");
@@ -87,9 +87,25 @@ public class Honda extends Vehicle {
         return 0;
     }
 
-    //@Override
-    public void sortPrice(int min, int max) {
+    @Override
+    public String[] sortPrice(int min, int max) {
+        ArrayList<String> priceFilter = new ArrayList<>();
+        for (int i = 0; i < cars.size(); i++) {
+            String honda = null;
+            if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
+                honda = cars.get(i).getPrice() + cars.get(i).getYear() + cars.get(i).getModel();
+                priceFilter.add(honda);
+            }
+        }
 
+        HondaBST sortFilteredList = new HondaBST();
+        ArrayList<HondaCar> sortListWithBST = priceFilter.addRecursive();
+
+        String[] sortedHondaList = new String[sortListWithBST.size()];
+        for (int i = 0; i < sortListWithBST.size(); i++) {
+            sortedHondaList[i] = sortListWithBST.get(i).getYear();
+        }
+        return sortedHondaList;
     }
 
     @Override
@@ -103,7 +119,7 @@ public class Honda extends Vehicle {
         }
 
         String eachCar = new String();
-        LinkedList<HondaCar> carsByYear = new LinkedList<HondaCar>();
+        LinkedList<String> carsByYear = new LinkedList<String>();
         while (sc.hasNextLine()){
             eachCar = sc.nextLine();
             carsByYear.add(eachCar);
@@ -111,13 +127,11 @@ public class Honda extends Vehicle {
         sc.close();
 
         Collections.sort(carsByYear);
-        String[] yearList = new String[carsByYear.size()];
-
-        for (int i = 0; i < carsByYear.size(); i++) {
-            yearList[i]= carsByYear.get(i).getYear() + "," + carsByYear.get(i).getPrice() + "," + carsByYear.get(i).getModel();
-        }
-
-        System.out.println(yearList);
+        // converts from linked list to object array:
+        Object[] temp = carsByYear.toArray();
+        // converts from object array to string array:
+        String[] yearList = Arrays.copyOf(temp, temp.length, String[].class);
+        //System.out.println(Arrays.toString(yearList));
         return yearList;
     }
 
@@ -140,6 +154,4 @@ public class Honda extends Vehicle {
             throw new RuntimeException(e);
         }
     }
-
 }
-

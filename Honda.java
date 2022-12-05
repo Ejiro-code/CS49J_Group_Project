@@ -2,6 +2,14 @@ import java.io.*;
 import java.util.*;
 
 public class Honda extends Vehicle {
+
+    File hondaFile;
+    HondaBST priceBST;
+    public Honda() {
+        this.hondaFile = new File("honda.txt");
+        this.priceBST = new HondaBST();
+    }
+
     public static ArrayList<HondaCar> cars = new ArrayList<>(15);
 
     public static void something(String fileName) {
@@ -58,10 +66,9 @@ public class Honda extends Vehicle {
     }
 
     public int randomCar() {
-        File hondaList = new File("honda.txt");
         Scanner sc = null;
         try {
-            sc = new Scanner(hondaList);
+            sc = new Scanner(hondaFile);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -89,31 +96,27 @@ public class Honda extends Vehicle {
 
     @Override
     public String[] sortPrice(int min, int max) {
-        ArrayList<String> priceFilter = new ArrayList<>();
+        ArrayList<HondaCar> sortListWithBST = priceBST.printAscending();
+        ArrayList<HondaCar> priceFilter = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
-            String honda = null;
             if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
-                honda = cars.get(i).getPrice() + cars.get(i).getYear() + cars.get(i).getModel();
-                priceFilter.add(honda);
+                priceFilter.add(sortListWithBST.get(i));
             }
         }
 
-        HondaBST sortFilteredList = new HondaBST();
-        ArrayList<HondaCar> sortListWithBST = priceFilter.addRecursive();
-
         String[] sortedHondaList = new String[sortListWithBST.size()];
-        for (int i = 0; i < sortListWithBST.size(); i++) {
-            sortedHondaList[i] = sortListWithBST.get(i).getYear();
+        for (int i = 0; i < priceFilter.size(); i++) {
+            sortedHondaList[i] = priceFilter.get(i).getYear() + "," + priceFilter.get(i).getModel() + "," + priceFilter.get(i).getPrice();
         }
+        System.out.println(Arrays.toString(sortedHondaList));
         return sortedHondaList;
     }
 
     @Override
     public String[] sortYear() {
-        File hondaList = new File("honda3.txt");
         Scanner sc = null;
         try {
-            sc = new Scanner(hondaList);
+            sc = new Scanner(hondaFile);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -145,7 +148,7 @@ public class Honda extends Vehicle {
         cars.add(car);
 
         try {
-            FileWriter addHonda = new FileWriter("honda3.txt",true);
+            FileWriter addHonda = new FileWriter(hondaFile,true);
             PrintWriter out = new PrintWriter(addHonda);
             out.println(car.getYear() + "," + car.getPrice() + "," + car.getModel());
 

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ChevyPriceTree {
     ChevyNode root;
     private ChevyNode addRecursive(ChevyNode current, ChevyNode n) {
@@ -16,16 +18,18 @@ public class ChevyPriceTree {
         root = addRecursive(root, n);
     }
 
-    void printAscendingRecursive(ChevyNode current){
+    void printAscendingRecursive(ChevyNode current, ArrayList<ChevyCar> sortedArr){
         if (current.left != null){
-            printAscendingRecursive(current.left);
+            printAscendingRecursive(current.left, sortedArr);
         }
-        System.out.println("$" + current.price + " - " + current.year + " Chevy " + current.model);
+        sortedArr.add(current.car);
         if(current.right != null) {
-            printAscendingRecursive(current.right);
+            printAscendingRecursive(current.right, sortedArr);
         } else {return;}
     }
-    void printAscending(){
-        printAscendingRecursive(root);
+    ArrayList<ChevyCar> printAscending(){
+        ArrayList<ChevyCar> sortedArr = new ArrayList<ChevyCar>();
+        printAscendingRecursive(root, sortedArr);
+        return sortedArr;
     }
 }

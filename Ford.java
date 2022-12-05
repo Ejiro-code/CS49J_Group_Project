@@ -36,8 +36,6 @@ public class Ford extends Vehicle{
             cars.add(car);
         }
     }
-
-    @Override
     public void randomCar() {
         Random rand = new Random();
         int randNum = rand.nextInt(15);
@@ -75,7 +73,7 @@ public class Ford extends Vehicle{
     }
 
     @Override
-    public void sortYear() {
+    public String[] sortYear() {
         Node root = new Node(cars.get(0).getYear());
         BST d = new BST(root);
         for(int i = 0; i < cars.size(); i++){
@@ -83,8 +81,8 @@ public class Ford extends Vehicle{
         }
         d.display(root);
 
+        return new String[root.data];
     }
-
     @Override
     public void soldCar(int price, int year, String model) {
         FordCar car = new FordCar();
@@ -92,12 +90,19 @@ public class Ford extends Vehicle{
         car.setPrice(price);
         car.setYear(year);
 
-        ArrayList<String> carArray = new ArrayList<>();
-        for (int i = 0; i < carArray.size(); i++) {
-            String c = null;
+        cars.add(car);
 
-
+        try {
+            FileWriter fw = new FileWriter("ford.txt",true);
+            PrintWriter out = new PrintWriter(fw);
+            out.println(car.getYear()+","+car.getPrice()+","+car.getModel());
+            out.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        //create a new ford car and set the values that the user gives and put info in the same car arraylist and write that back to the file.
+
     }
+
 }
+
+

@@ -3,17 +3,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
-import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Chevy extends Vehicle{
 
-    ChevyPriceTree priceTree = new ChevyPriceTree();
-    ChevyAgeTree ageTree = new ChevyAgeTree();
-    File chevyFile = new File("chevy.txt");
+    public Chevy() {
+        this.priceTree = new ChevyPriceTree();
+        this.ageTree = new ChevyAgeTree();
+        this.chevyFile = new File("chevy.txt");
+    }
 
-    @Override
+    ChevyPriceTree priceTree;
+    ChevyAgeTree ageTree;
+    File chevyFile;
+
+//    @Override
     public int randomCar() {
         try {
             Scanner s = new Scanner(chevyFile);
@@ -24,8 +29,7 @@ public class Chevy extends Vehicle{
             Random r = new Random();
             return r.nextInt(size-1);
         } catch(FileNotFoundException e) {
-            System.out.println("File not found");
-            return 0;
+            throw new RuntimeException(e);
         }
     }
 
@@ -48,8 +52,9 @@ public class Chevy extends Vehicle{
             for (int i = 0; i < arr.size(); i++){
                 carList[i] = arr.get(i);
             }
+            return carList;
         } catch(FileNotFoundException e) {
-            System.out.println("File not found");
+            throw new RuntimeException(e);
         }
     }
 
@@ -93,10 +98,10 @@ public class Chevy extends Vehicle{
     private void addCar(ChevyCar temp) {
         try {
             FileWriter writer = new FileWriter("chevy.txt");
-            writer.write(temp.getYear() + " Chevy " + temp.getModel() + " - $" + temp.getPrice(););
+            writer.write(temp.getYear() + "," + temp.getPrice() + "," + temp.getModel());
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error in writing to chevy.txt");
+            throw new RuntimeException(e);
         }
     }
 }

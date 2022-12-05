@@ -1,5 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.File;
+import java.io.*;
 import java.util.*;
 
 public class Honda extends Vehicle {
@@ -44,9 +43,22 @@ public class Honda extends Vehicle {
         }
     }
 
+    public String[] allCars(){
+        String[] hondaInfo = new String[cars.size()];
+        String eachHonda = null;
 
-    public void randomCar() {
-        File hondaList = new File("hondacars.txt");
+        System.out.println("This is out inventory of Honda vehicles:");
+        for(int i = 0; i < cars.size(); i++){
+            eachHonda = "Year: " + cars.get(i).getYear() + ", Price: $" + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
+            hondaInfo[i] = eachHonda;
+            System.out.println(hondaInfo[i]);
+        }
+
+        return hondaInfo;
+    }
+
+    public int randomCar() {
+        File hondaList = new File("honda.txt");
         Scanner sc = null;
         try {
             sc = new Scanner(hondaList);
@@ -64,23 +76,25 @@ public class Honda extends Vehicle {
 
         sc.close();
 
-        System.out.println("Total Number of Lines: " + count);
+        //System.out.println("Total Number of Lines: " + count);
         Random rand = new Random();
         int randNum = rand.nextInt(count);
 
         System.out.print("The " + cars.get(randNum).getYear());
         System.out.print(" Honda " + cars.get(randNum).getModel() + " was selected, ");
         System.out.println("with a starting price of $" + cars.get(randNum).getPrice() + ".");
+
+        return 0;
     }
 
-    @Override
+    //@Override
     public void sortPrice(int min, int max) {
 
     }
 
     @Override
-    public void sortYear() {
-        File hondaList = new File("hondacars.txt");
+    public String[] sortYear() {
+        File hondaList = new File("honda3.txt");
         Scanner sc = null;
         try {
             sc = new Scanner(hondaList);
@@ -89,24 +103,43 @@ public class Honda extends Vehicle {
         }
 
         String eachCar = new String();
-        LinkedList<String> carsByYear = new LinkedList<String>();
+        LinkedList<HondaCar> carsByYear = new LinkedList<HondaCar>();
         while (sc.hasNextLine()){
             eachCar = sc.nextLine();
             carsByYear.add(eachCar);
         }
         sc.close();
 
+        Collections.sort(carsByYear);
+        String[] yearList = new String[carsByYear.size()];
 
-        int count = 0;
-        Collections.reverse(carsByYear);
-        Iterator i = carsByYear.iterator();
-        while (i.hasNext()) {
-            System.out.println(i.next());
+        for (int i = 0; i < carsByYear.size(); i++) {
+            yearList[i]= carsByYear.get(i).getYear() + "," + carsByYear.get(i).getPrice() + "," + carsByYear.get(i).getModel();
+        }
+
+        System.out.println(yearList);
+        return yearList;
+    }
+
+    //@Override
+    public void soldCar(int price, int year, String model) {
+        HondaCar car = new HondaCar();
+        car.setModel(model);
+        car.setPrice(price);
+        car.setYear(year);
+
+        cars.add(car);
+
+        try {
+            FileWriter addHonda = new FileWriter("honda3.txt",true);
+            PrintWriter out = new PrintWriter(addHonda);
+            out.println(car.getYear() + "," + car.getPrice() + "," + car.getModel());
+
+            out.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public void soldCar(int price, int year, String model) {
-
-    }
 }
+

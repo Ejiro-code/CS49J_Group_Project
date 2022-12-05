@@ -1,7 +1,6 @@
 public class HondaCar implements VehicleBuild{
     private int year;
     private int price;
-    //private String make;
     private String model;
 
     public HondaCar(int year, int price, String model) {
@@ -33,7 +32,6 @@ public class HondaCar implements VehicleBuild{
 
     @Override
     public String getModel() {
-        return this.model;
+        return model;
     }
-
 }

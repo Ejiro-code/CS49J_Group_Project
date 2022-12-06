@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class actualShop implements ActionListener {
     Toyota vehicle = new Toyota("toyota.txt");
     Honda vehicle1 = new Honda();
-
     Ford vehicle2 = new Ford("ford.txt");
 
     Chevy vehicle3 = new Chevy("chevy.txt");

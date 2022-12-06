@@ -150,7 +150,7 @@ public class Chevy extends Vehicle{
         try {
             FileWriter f = new FileWriter("chevy.txt",true);
             PrintWriter p = new PrintWriter(f);
-            p.println("\n" + temp.getYear() + "," + temp.getPrice() + "," + temp.getModel());
+            p.print("\n" + temp.getYear() + "," + temp.getPrice() + "," + temp.getModel());
             //it's important that you close the printWriter object
             p.close();
             /*FileWriter writer = new FileWriter("chevy.txt");

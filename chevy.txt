@@ -8,8 +8,3 @@
 2018,18739,Impala
 2017,70195,Corvette
 2012,16990,Volt
-2021,36500,Silverado
-2016,19250,Colorado
-2023,28930,Bolt EUV
-2014,15350,Silverado
-2007,6999,Colorado

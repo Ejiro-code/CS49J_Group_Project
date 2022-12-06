@@ -44,7 +44,7 @@ public class Chevy extends Vehicle{
                 arr.add(c);
             }
             for (int i = 0; i < arr.size(); i++){
-                System.out.println(arr.get(i).getYear() + " Chevy " + arr.get(i).getModel() + " - $" + arr.get(i).getPrice);
+                System.out.println(arr.get(i).getYear() + " Chevy " + arr.get(i).getModel() + " - $" + arr.get(i).getPrice());
                 ChevyNode tempNode = new ChevyNode(arr.get(i));
                 priceTree.add(tempNode);
                 ageTree.add(tempNode);

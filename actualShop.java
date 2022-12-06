@@ -10,7 +10,7 @@ public class actualShop implements ActionListener {
 
     Ford vehicle2 = new Ford();
 
-    Chevy vehicle3 = new Chevy();
+    Chevy vehicle3 = new Chevy("chevy.txt");
     private String[] cars;
 
     int carV = 0;

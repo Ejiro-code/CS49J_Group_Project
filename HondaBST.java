@@ -3,15 +3,19 @@ import java.util.ArrayList;
 public class HondaBST {
     public HondaNode root;
 
+    public HondaBST(HondaNode r){
+        root = r;
+    }
+
     //the recursive method that preforms insertion of data into the tree
     private HondaNode addRecursive(HondaNode current, HondaNode h) {
         if (current == null) {
             return new HondaNode(h.honda);
         }
 
-        if (h.price <= current.price) {
+        if (h.year <= current.year) {
             current.left = addRecursive(current.left, h);
-        } else if (h.price >= current.price) {
+        } else if (h.year > current.year) {
             current.right = addRecursive(current.right, h);
         } else {
             // value already exists
@@ -35,10 +39,5 @@ public class HondaBST {
         } else {
             return;
         }
-    }
-    ArrayList<HondaCar> printAscending(){
-        ArrayList<HondaCar> sortedArr = new ArrayList<HondaCar>();
-        printAscendingRecursive(root, sortedArr);
-        return sortedArr;
     }
 }

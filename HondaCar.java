@@ -29,9 +29,10 @@ public class HondaCar implements VehicleBuild{
     public int getPrice() {
         return price;
     }
- 
+
     @Override
     public String getModel() {
         return model;
     }
+
 }

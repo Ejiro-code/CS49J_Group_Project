@@ -64,6 +64,7 @@ public class Chevy extends Vehicle{
             int size = 0;
             while (s.hasNextLine()){
                 size++;
+                s.next();
             }
             Random r = new Random();
             return r.nextInt(size);

@@ -117,10 +117,8 @@ public class Chevy extends Vehicle{
         ArrayList<ChevyCar> aList = priceTree.printAscending();
         ArrayList<ChevyCar> withinBoundsList = new ArrayList<ChevyCar>();
         for (int i = 0; i < aList.size(); i++){
-            if (aList.get(i).getYear() >= min){
-                if (aList.get(i).getYear() <= max){
-                    withinBoundsList.add(aList.get(i));
-                } else break;
+            if (aList.get(i).getYear() >= min && aList.get(i).getYear() <= max){
+                withinBoundsList.add(aList.get(i));
             }
         }
         String[] arr = new String[withinBoundsList.size()];

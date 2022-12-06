@@ -3,22 +3,18 @@ import java.util.*;
 
 public class Honda extends Vehicle {
 
+    public static ArrayList<HondaCar> cars = new ArrayList<>();
     File hondaFile;
-    HondaBST priceBST;
+    //HondaBST priceBST;
+
     public Honda() {
         this.hondaFile = new File("honda.txt");
-        this.priceBST = new HondaBST();
-    }
-
-    public static ArrayList<HondaCar> cars = new ArrayList<>(15);
-
-    public static void something(String fileName) {
-        File honda = new File(fileName);
+        //this.priceBST = new HondaBST();
 
         Scanner in;
         {
             try {
-                in = new Scanner(honda);
+                in = new Scanner(hondaFile);
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -66,50 +62,39 @@ public class Honda extends Vehicle {
     }
 
     public int randomCar() {
-        Scanner sc = null;
-        try {
-            sc = new Scanner(hondaFile);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        // read each line and
-        // count number of lines
-        int count = 0;
-        while(sc.hasNextLine()) {
-            sc.nextLine();
-            count++;
-        }
-
-        sc.close();
-
-        //System.out.println("Total Number of Lines: " + count);
         Random rand = new Random();
-        int randNum = rand.nextInt(count);
+        int randNum = rand.nextInt(cars.size());
 
-        System.out.print("The " + cars.get(randNum).getYear());
-        System.out.print(" Honda " + cars.get(randNum).getModel() + " was selected, ");
-        System.out.println("with a starting price of $" + cars.get(randNum).getPrice() + ".");
-
-        return 0;
+        return randNum;
     }
 
     @Override
     public String[] sortPrice(int min, int max) {
-        ArrayList<HondaCar> sortListWithBST = priceBST.printAscending();
-        ArrayList<HondaCar> priceFilter = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
-                priceFilter.add(sortListWithBST.get(i));
-            }
-        }
+        ArrayList<HondaCar> s = new ArrayList<>();
+        int j = 0;
+        HondaNode firstCar;
 
-        String[] sortedHondaList = new String[sortListWithBST.size()];
-        for (int i = 0; i < priceFilter.size(); i++) {
-            sortedHondaList[i] = priceFilter.get(i).getYear() + "," + priceFilter.get(i).getModel() + "," + priceFilter.get(i).getPrice();
+        while(cars.get(j).getPrice() < min || cars.get(j).getPrice() > max){
+            j++;
         }
-        System.out.println(Arrays.toString(sortedHondaList));
-        return sortedHondaList;
+        firstCar = new HondaNode(cars.get(j));
+
+
+
+        HondaBST some = new HondaBST(firstCar);
+        for (int i = j+1; i < cars.size(); i++) {
+            if(cars.get(i).getPrice() >= min && cars.get(i).getPrice() <= max){
+                some.add(new HondaNode(cars.get(i)));
+            }
+
+        }
+        some.printAscendingRecursive(firstCar,s);
+        String[] solution = new String[s.size()];
+
+        for(int i = 0; i<s.size(); i++){
+            solution[i] = s.get(i).getYear() + "- " + s.get(i).getPrice() + ", " + s.get(i).getModel();
+        }
+        return solution;
     }
 
     @Override

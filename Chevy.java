@@ -8,15 +8,48 @@ import java.util.Scanner;
 
 public class Chevy extends Vehicle{
 
-    public Chevy() {
+    public Chevy(String filename) {
         this.priceTree = new ChevyPriceTree();
         this.ageTree = new ChevyAgeTree();
-        this.chevyFile = new File("chevy.txt");
+        this.chevyFile = new File(filename);
+        this.chevyCarsArrL = new ArrayList<ChevyCar>();
+
+        try {
+            Scanner s = new Scanner(chevyFile);
+            ArrayList<ChevyCar> arr = new ArrayList<ChevyCar>();
+            while (s.hasNextLine()){
+                ChevyCar c = new ChevyCar();
+                Scanner line = new Scanner(s.nextLine());
+                String[] singleLine = new String[3];
+                line.useDelimiter(",");
+                int i = 0;
+                /*while (line.hasNext()){
+                    singleLine[i] = line.next();
+                    i++;
+                }*/
+                if (line.hasNext()) {
+                    c.setYear(line.nextInt());
+                }
+                if (line.hasNext()) {
+                    c.setPrice(line.nextInt());
+                }
+                if (line.hasNext()) {
+                    c.setModel(line.next());
+                }
+                arr.add(c);
+            }
+            for (int i = 0; i < arr.size(); i++){
+                System.out.println(arr.get(i).getYear() + " Chevy " + arr.get(i).getModel() + " - $" + arr.get(i).getPrice);
+            }
+        } catch(FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     ChevyPriceTree priceTree;
     ChevyAgeTree ageTree;
     File chevyFile;
+    ArrayList<ChevyCar> chevyCarsArrL;
 
 //    @Override
     public int randomCar() {
@@ -93,6 +126,7 @@ public class Chevy extends Vehicle{
         ChevyNode tempNode = new ChevyNode(temp);
         priceTree.add(tempNode);
         ageTree.add(tempNode);
+        chevyCarsArrL.add(temp);
     }
 
     private void addCar(ChevyCar temp) {

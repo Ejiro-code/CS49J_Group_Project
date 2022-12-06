@@ -12,4 +12,7 @@ public class HondaNode {
         left = null;
         right = null;
     }
+
+    public HondaNode() {
+    }
 }

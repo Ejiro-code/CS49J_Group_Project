@@ -8,9 +8,9 @@ public class actualShop implements ActionListener {
     Toyota vehicle = new Toyota("toyota.txt");
     Honda vehicle1 = new Honda();
 
-    Ford vehicle2 = new Ford();
+    Ford vehicle2 = new Ford("ford.txt");
 
-    Chevy vehicle3 = new Chevy();
+    Chevy vehicle3 = new Chevy("chevy.txt");
     private String[] cars;
 
     int carV = 0;
@@ -65,7 +65,7 @@ public class actualShop implements ActionListener {
         year.setFocusable(false);
         sell.setFocusable(false);
         rand.setFocusable(false);
-        pan1.setBounds(0,0, 150, 500);
+        pan1.setBounds(0,0, 150, 550);
         pan1.setBackground(Color.GRAY);
         pan1.add(allCars);
         pan1.add(prices);
@@ -80,7 +80,7 @@ public class actualShop implements ActionListener {
         sell.addActionListener(this);
         rand.addActionListener(this);
 
-        mainWin.setBounds(150, 40, 350, 460);
+        mainWin.setBounds(150, 40, 350, 500);
         //mainWin.setBackground(Color.CYAN);
 
         frame.add(mainBranch);
@@ -89,7 +89,7 @@ public class actualShop implements ActionListener {
         frame.add(mainWin);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(50,50,50));
-        frame.setSize(500,500);
+        frame.setSize(500,550);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setResizable(false);
@@ -236,26 +236,30 @@ public class actualShop implements ActionListener {
         mainWin.repaint();
 
         JLabel line1 = new JLabel();
-
+        int randNum = 0;
 
 
 
         String[] c = vehicle.allCars();
+        randNum = vehicle.randomCar();
 
         if (carV == 1) {
             c = vehicle1.allCars();
             line1.setText("Random Honda Vehicle");
+            randNum = vehicle1.randomCar();
         }else if (carV == 2) {
             c = vehicle2.allCars();
+            randNum = vehicle2.randomCar();
             line1.setText("Random Ford Vehicle");
         }else if (carV == 3) {
             c = vehicle3.allCars();
+            randNum = vehicle3.randomCar();
             line1.setText("Random Chevy Vehicle");
         }
         line1.setBounds(0,0, 200,35);
         mainWin.add(line1);
 
-        JLabel ans = new JLabel(c[vehicle.randomCar()]);
+        JLabel ans = new JLabel(c[randNum]);
         ans.setFont(new Font("MV Boli", Font.BOLD,15));
         mainWin.add(ans);
         mainWin.revalidate();

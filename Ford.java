@@ -10,8 +10,8 @@ public class Ford extends Vehicle{
     public static ArrayList<FordCar> cars = new ArrayList<>();
 
     /**
+     * Creating a new file instance named Ford.
      * @param fileName
-     * creating a new file instance named Ford
      */
     public static void Ford(String fileName) {
         File Ford = new File(fileName);
@@ -82,7 +82,9 @@ public class Ford extends Vehicle{
     }
 
     /**
-     * this method takes the min and max of a price the user enters and outputs the cars that are within that range of price.
+     * This method creates an array list and then a for loop goes through the file given the cars.size()(size of the file).
+     * the if statement gets the price max and min and the word car is what will display given users input.
+     *
      * @param min setting the min
      * @param max setting the max
      * @return returns the cars that are withing that range.
@@ -109,8 +111,10 @@ public class Ford extends Vehicle{
     }
 
     /**
-     * This method prints the prices in ascending order.
-     * @return data from BST class.
+     * This method creates a binary search tree and the Node root creates a node which
+     * consists of the year and model of the first and then thr for loop itereates through
+     * the file and then stores all the years and models in the string array which it then prints.
+     * @return returns the sorted years with model.
      */
     @Override
     public String[] sortYear() {
@@ -119,25 +123,13 @@ public class Ford extends Vehicle{
         for(int i = 1; i < cars.size();i++){
             d.insert(cars.get(i).getYear(), cars.get(i).getModel());
         }
-
-        //String myArray[] = new String[cars.size()];
         d.sortYear(root);
         String[] year = d.results();
 
         return year;
     }
-
-
-        /**
-        for(int i = 0; i < cars.size(); i++){
-            d.insert(cars.get(i).getYear());
-        }
-        d.display(root);
-        
-    }
-
     /**
-     * This method lets the user create a new car and add that car to the file.
+     * This method lets the user create a new car and write that car back to the file.
      * @param price sets price of car
      * @param year sets year of car
      * @param model sets model of car

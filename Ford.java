@@ -2,22 +2,18 @@ import java.io.*;
 import java.util.*;
 import java.util.Scanner;
 import java.io.File;
-
-
-
 public class Ford extends Vehicle{
 
     /**
      * this is creating an arraylist of the 15 cars from my ford.txt file
      */
-    public static ArrayList<FordCar> cars = new ArrayList<>(15);
+    public static ArrayList<FordCar> cars = new ArrayList<>();
 
     /**
-     *
      * @param fileName
      * creating a new file instance named Ford
      */
-    public static void something(String fileName) {
+    public static void Ford(String fileName) {
         File Ford = new File(fileName);
         Scanner in;
         /**
@@ -57,20 +53,19 @@ public class Ford extends Vehicle{
     }
 
     /**
-     * This method is randomizing the cars in the file and printing it.
+     *This method picks a random car within the file.
+     * @return returns random Ford Vehicle.
      */
-    public void randomCar() {
+    public int randomCar() {
         Random rand = new Random();
-        int randNum = rand.nextInt(15);
-        System.out.println(cars.get(randNum).getYear());
-        System.out.println(cars.get(randNum).getPrice());
-        System.out.println(cars.get(randNum).getModel());
+        int randNum = rand.nextInt(cars.size());
+        return randNum;
 
     }
 
     /**
      * This method returns a string array that contains the vehicles respective elements.
-     * @return
+     * @return returns info of each car.
      */
     @Override
     public String[] allCars() {
@@ -80,7 +75,7 @@ public class Ford extends Vehicle{
         //for loop  that will get the year, price and model and store it in the string array. info[i] adds it
         //to said array.
         for(int i = 0; i < cars.size(); i++){
-            eachCar = "Year: " + cars.get(i).getYear() + "Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
+            eachCar = "Year: " + cars.get(i).getYear() + ", Model: " + cars.get(i).getModel() + ", Price: " + cars.get(i).getPrice();
             info[i] = eachCar;
         }
         return info;
@@ -100,7 +95,7 @@ public class Ford extends Vehicle{
             String car = null;
             //the word car is what will display given users input
             if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
-                car = cars.get(i).getPrice() + cars.get(i).getYear() + cars.get(i).getModel();
+                car = "Year: " + cars.get(i).getYear() + ", Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
                 //adds car to arraylist
                 carArray.add(car);
             }
@@ -119,14 +114,26 @@ public class Ford extends Vehicle{
      */
     @Override
     public String[] sortYear() {
-        Node root = new Node(cars.get(0).getYear());
+        Node root = new Node(cars.get(0).getYear(), cars.get(0).getModel());
         BST d = new BST(root);
+        for(int i = 1; i < cars.size();i++){
+            d.insert(cars.get(i).getYear(), cars.get(i).getModel());
+        }
+
+        //String myArray[] = new String[cars.size()];
+        d.sortYear(root);
+        String[] year = d.results();
+
+        return year;
+    }
+
+
+        /**
         for(int i = 0; i < cars.size(); i++){
             d.insert(cars.get(i).getYear());
         }
         d.display(root);
-
-        return new String[root.data];
+        
     }
 
     /**
@@ -134,6 +141,7 @@ public class Ford extends Vehicle{
      * @param price sets price of car
      * @param year sets year of car
      * @param model sets model of car
+     * try statement writes the new car back to the file.
      */
     @Override
     public void soldCar(int price, int year, String model) {
@@ -143,7 +151,6 @@ public class Ford extends Vehicle{
         car.setYear(year);
 
         cars.add(car);
-        //writing new car back to the file
         try {
             FileWriter fw = new FileWriter("ford.txt",true);
             PrintWriter out = new PrintWriter(fw);

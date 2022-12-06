@@ -9,6 +9,7 @@ public class ChevyCar implements VehicleBuild{
         this.model = model;
     }
 
+    public ChevyCar(){};
     @Override
     public String getModel() {
         return model;

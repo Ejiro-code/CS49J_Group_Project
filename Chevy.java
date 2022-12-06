@@ -7,7 +7,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Chevy extends Vehicle{
-
+    /**
+     * Initializes a ChevyPriceTree, a ChevyAgeTree, a File, and an ArrayList
+     * Also prints the cars in the File. Reads what cars already exist in the file
+     * and adds them to the trees and the ArrayList
+     * @param filename
+     */
     public Chevy(String filename) {
         this.priceTree = new ChevyPriceTree();
         this.ageTree = new ChevyAgeTree();
@@ -40,6 +45,10 @@ public class Chevy extends Vehicle{
             }
             for (int i = 0; i < arr.size(); i++){
                 System.out.println(arr.get(i).getYear() + " Chevy " + arr.get(i).getModel() + " - $" + arr.get(i).getPrice);
+                ChevyNode tempNode = new ChevyNode(arr.get(i));
+                priceTree.add(tempNode);
+                ageTree.add(tempNode);
+                chevyCarsArrL.add(arr.get(i));
             }
         } catch(FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -60,7 +69,7 @@ public class Chevy extends Vehicle{
                 size++;
             }
             Random r = new Random();
-            return r.nextInt(size-1);
+            return r.nextInt(size);
         } catch(FileNotFoundException e) {
             throw new RuntimeException(e);
         }

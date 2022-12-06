@@ -59,8 +59,8 @@ public class Ford extends Vehicle{
     public int randomCar() {
         Random rand = new Random();
         int randNum = rand.nextInt(cars.size());
-        return randNum;
 
+        return randNum;
     }
 
     /**

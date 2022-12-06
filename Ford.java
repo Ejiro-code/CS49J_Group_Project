@@ -13,7 +13,7 @@ public class Ford extends Vehicle{
      * Creating a new file instance named Ford.
      * @param fileName
      */
-    public static void Ford(String fileName) {
+    public Ford(String fileName) {
         File Ford = new File(fileName);
         Scanner in;
         /**

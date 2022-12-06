@@ -1,0 +1,15 @@
+2004,8999,Tahoe
+2011,16998,Suburban
+2019,22774,Blazer
+2010,9990,Equinox
+2024,21495,Trax
+2015,26998,Camaro
+2022,24395,Malibu
+2018,18739,Impala
+2017,70195,Corvette
+2012,16990,Volt
+2021,36500,Silverado
+2016,19250,Colorado
+2023,28930,Bolt EUV
+2014,15350,Silverado
+2007,6999,Colorado

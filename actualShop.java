@@ -91,7 +91,6 @@ public class actualShop implements ActionListener {
         frame.setSize(500,550);
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.setResizable(false);
     }
 
 

@@ -1,8 +1,5 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -150,9 +147,14 @@ public class Chevy extends Vehicle{
 
     private void addCar(ChevyCar temp) {
         try {
-            FileWriter writer = new FileWriter("chevy.txt");
+            FileWriter f = new FileWriter("chevy.txt",true);
+            PrintWriter p = new PrintWriter(f);
+            p.println(temp.getYear() + "," + temp.getPrice() + "," + temp.getModel());
+            //it's important that you close the printWriter object
+            p.close();
+            /*FileWriter writer = new FileWriter("chevy.txt");
             writer.write(temp.getYear() + "," + temp.getPrice() + "," + temp.getModel());
-            writer.close();
+            writer.close();*/
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -27,8 +27,8 @@ public class Chevy extends Vehicle{
                 Scanner line = new Scanner(s.nextLine());
                 String[] singleLine = new String[3];
                 line.useDelimiter(",");
-                int i = 0;
-                /*while (line.hasNext()){
+                /*int i = 0;
+                while (line.hasNext()){
                     singleLine[i] = line.next();
                     i++;
                 }*/
@@ -83,10 +83,22 @@ public class Chevy extends Vehicle{
             while (s.hasNextLine()){
                 Scanner line = new Scanner(s.nextLine());
                 String[] singleLine = new String[3];
-                int i = 0;
+                line.useDelimiter(",");
+                /*int i = 0;
                 while (line.hasNext()){
                     singleLine[i] = line.next();
                     i++;
+                }
+                arr.add(singleLine[0] + " Chevy " + singleLine[2] + " - $" + singleLine[1]);
+                 */
+                if (line.hasNext()) {
+                    singleLine[0] = Integer.toString(line.nextInt());
+                }
+                if (line.hasNext()) {
+                    singleLine[1] = Integer.toString(line.nextInt());
+                }
+                if (line.hasNext()) {
+                    singleLine[2] = line.next();
                 }
                 arr.add(singleLine[0] + " Chevy " + singleLine[2] + " - $" + singleLine[1]);
             }

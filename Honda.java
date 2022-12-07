@@ -90,6 +90,7 @@ public class Honda extends Vehicle {
         for(int i = 0; i<s.size(); i++){
             solution[i] = s.get(i).getYear() + "- " + s.get(i).getPrice() + ", " + s.get(i).getModel();
         }
+
         return solution;
     }
 
@@ -111,21 +112,17 @@ public class Honda extends Vehicle {
         sc.close();
 
         Collections.sort(carsByYear);
-        // converts from linked list to object array:
         Object[] temp = carsByYear.toArray();
-        // converts from object array to string array:
         String[] yearList = Arrays.copyOf(temp, temp.length, String[].class);
-        //System.out.println(Arrays.toString(yearList));
         return yearList;
     }
 
-    //@Override
+    @Override
     public void soldCar(int price, int year, String model) {
         HondaCar car = new HondaCar();
         car.setModel(model);
         car.setPrice(price);
         car.setYear(year);
-
         cars.add(car);
 
         try {

@@ -163,7 +163,6 @@ public class Toyota extends Vehicle{
             w[i] = words.get(i);
         }
         return w;
-
     }
 
     //This is where we append that new car to our respective files

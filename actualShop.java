@@ -301,7 +301,6 @@ public class actualShop implements ActionListener {
                 cars = vehicle3.allCars();
             }
 
-
             JLabel submitted = new JLabel("Thank you");
             submitted.setBounds(20,100,60,30);
             submitted.setBackground(Color.GREEN);

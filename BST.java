@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * class for the node
+ * class for the node sets the instance variables data, model, left and right.
  */
 class Node {
     public int data;
@@ -17,10 +17,6 @@ class Node {
         this.model = model;
     }
 }
-
-/**
- *
- */
 class BST {
     public Node root;
     public ArrayList<String> sol = new ArrayList<String>();
@@ -30,14 +26,13 @@ class BST {
     }
 
     /**
-     * This method sorts through the subtrees to find car years.
+     * This method sorts through the subtrees to find car years using recursion.
      * @param node
      */
     public void sortYear(Node node) {
         if (node != null) {
             sortYear(node.left);
 
-            //System.out.print(node.data + "");
             sol.add(String.valueOf(node.data) + ", " + node.model);
 
             sortYear(node.right);

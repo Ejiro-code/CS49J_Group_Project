@@ -75,7 +75,7 @@ public class Ford extends Vehicle{
         //for loop  that will get the year, price and model and store it in the string array. info[i] adds it
         //to said array.
         for(int i = 0; i < cars.size(); i++){
-            eachCar = "Year: " + cars.get(i).getYear() + ", Model: " + cars.get(i).getModel() + ", Price: " + cars.get(i).getPrice();
+            eachCar = "Year: " + cars.get(i).getYear() + ", Model: " + cars.get(i).getModel() + ", Price: $" + cars.get(i).getPrice();
             info[i] = eachCar;
         }
         return info;
@@ -97,7 +97,7 @@ public class Ford extends Vehicle{
             String car = null;
             //the word car is what will display given users input
             if (cars.get(i).getPrice() <= max && cars.get(i).getPrice() >= min) {
-                car = "Year: " + cars.get(i).getYear() + ", Price: " + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
+                car = "Year: " + cars.get(i).getYear() + ", Price: $" + cars.get(i).getPrice() + ", Model: " + cars.get(i).getModel();
                 //adds car to arraylist
                 carArray.add(car);
             }
@@ -146,7 +146,8 @@ public class Ford extends Vehicle{
         try {
             FileWriter fw = new FileWriter("ford.txt",true);
             PrintWriter out = new PrintWriter(fw);
-            out.println(car.getYear()+","+car.getPrice()+","+car.getModel());
+            out.println();
+            out.print(car.getYear()+","+car.getPrice()+","+car.getModel());
             out.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

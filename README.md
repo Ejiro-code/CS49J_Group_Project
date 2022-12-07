@@ -49,7 +49,6 @@ sortPrice(int min, int max) - Sorts the ArrayList of cars in order by year, maki
 
 HondaNode() - stores all information of a HondaCar into a node
 HondaBST() - recursively orders all of the Honda cars in ascending order by year
-	addRecursive() - 
 
 sortYear(int price, int year, String model) - Uses a LinkedList to store all of the cars, and then uses collections.sort to order all of the cars in ascending order by year. The sorted LinkedList is then converted into an Object array, and then into a String array so it can be returned
 

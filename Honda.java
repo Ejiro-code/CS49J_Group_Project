@@ -5,11 +5,9 @@ public class Honda extends Vehicle {
 
     public static ArrayList<HondaCar> cars = new ArrayList<>();
     File hondaFile;
-    //HondaBST priceBST;
 
     public Honda() {
         this.hondaFile = new File("honda.txt");
-        //this.priceBST = new HondaBST();
 
         Scanner in;
         {
@@ -64,7 +62,6 @@ public class Honda extends Vehicle {
     public int randomCar() {
         Random rand = new Random();
         int randNum = rand.nextInt(cars.size());
-
         return randNum;
     }
 
@@ -77,17 +74,16 @@ public class Honda extends Vehicle {
         while(cars.get(j).getPrice() < min || cars.get(j).getPrice() > max){
             j++;
         }
+
         firstCar = new HondaNode(cars.get(j));
-
-
-
         HondaBST some = new HondaBST(firstCar);
+
         for (int i = j+1; i < cars.size(); i++) {
             if(cars.get(i).getPrice() >= min && cars.get(i).getPrice() <= max){
                 some.add(new HondaNode(cars.get(i)));
             }
-
         }
+
         some.printAscendingRecursive(firstCar,s);
         String[] solution = new String[s.size()];
 

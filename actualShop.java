@@ -183,6 +183,19 @@ public class actualShop implements ActionListener {
             line1.setText("Here's a list of all Chevy Vehicles: ");
         }
 
+        if(carV == 0){
+            cars = vehicle.allCars();
+        }
+        else if(carV == 1){
+            cars = vehicle1.allCars();
+        }
+        else if(carV == 2){
+            cars = vehicle2.allCars();
+        }
+        else if (carV == 3) {
+            cars = vehicle3.allCars();
+        }
+
         line1.setBounds(0,0, 200,35);
         mainWin.add(line1);
         mainWin.revalidate();
@@ -237,8 +250,6 @@ public class actualShop implements ActionListener {
         JLabel line1 = new JLabel();
         int randNum = 0;
 
-
-
         String[] c = vehicle.allCars();
         randNum = vehicle.randomCar();
 
@@ -274,9 +285,7 @@ public class actualShop implements ActionListener {
         } else if (e.getSource() == year) {
             sortYear();
         } else if (e.getSource() == sell) {
-            submit.setEnabled(true);
             newCar();
-
 
         } else if (e.getSource() == rand) {
             randomCar();
@@ -284,25 +293,22 @@ public class actualShop implements ActionListener {
         if(e.getSource() == enter){
             sortPrice(Integer.valueOf(min.getText()), Integer.valueOf(max.getText()));
         }
-        if(e.getSource() == submit){
+        else if(e.getSource() == submit){
             submit.setEnabled(false);
             if(carV == 0){
                 vehicle.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
-                cars = vehicle.allCars();
             }
             if (carV == 1) {
                 vehicle1.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
-                cars = vehicle1.allCars();
             }else if (carV == 2) {
                 vehicle2.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
-                cars = vehicle2.allCars();
             }else if (carV == 3) {
                 vehicle3.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
-                cars = vehicle3.allCars();
             }
+
             JLabel submitted = new JLabel("Thank you");
             submitted.setBounds(20,100,60,30);
-            submitted.setBackground(Color.GREEN);
+            submitted.setForeground(Color.GREEN);
             mainWin.add(submitted);
             mainWin.revalidate();
             mainWin.repaint();

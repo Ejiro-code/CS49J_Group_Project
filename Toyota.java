@@ -164,7 +164,6 @@ public class Toyota extends Vehicle{
         }
         return w;
     }
-
     //This is where we append that new car to our respective files
     @Override
     public void soldCar(int price, int year, String model) {

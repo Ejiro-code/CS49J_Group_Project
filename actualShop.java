@@ -300,7 +300,6 @@ public class actualShop implements ActionListener {
                 vehicle3.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
                 cars = vehicle3.allCars();
             }
-
             JLabel submitted = new JLabel("Thank you");
             submitted.setBounds(20,100,60,30);
             submitted.setBackground(Color.GREEN);

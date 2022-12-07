@@ -5,11 +5,9 @@ public class Honda extends Vehicle {
 
     public static ArrayList<HondaCar> cars = new ArrayList<>();
     File hondaFile;
-    //HondaBST priceBST;
 
     public Honda() {
         this.hondaFile = new File("honda.txt");
-        //this.priceBST = new HondaBST();
 
         Scanner in;
         {
@@ -64,7 +62,6 @@ public class Honda extends Vehicle {
     public int randomCar() {
         Random rand = new Random();
         int randNum = rand.nextInt(cars.size());
-
         return randNum;
     }
 
@@ -77,23 +74,23 @@ public class Honda extends Vehicle {
         while(cars.get(j).getPrice() < min || cars.get(j).getPrice() > max){
             j++;
         }
+
         firstCar = new HondaNode(cars.get(j));
-
-
-
         HondaBST some = new HondaBST(firstCar);
+
         for (int i = j+1; i < cars.size(); i++) {
             if(cars.get(i).getPrice() >= min && cars.get(i).getPrice() <= max){
                 some.add(new HondaNode(cars.get(i)));
             }
-
         }
+
         some.printAscendingRecursive(firstCar,s);
         String[] solution = new String[s.size()];
 
         for(int i = 0; i<s.size(); i++){
             solution[i] = s.get(i).getYear() + "- " + s.get(i).getPrice() + ", " + s.get(i).getModel();
         }
+
         return solution;
     }
 
@@ -115,21 +112,17 @@ public class Honda extends Vehicle {
         sc.close();
 
         Collections.sort(carsByYear);
-        // converts from linked list to object array:
         Object[] temp = carsByYear.toArray();
-        // converts from object array to string array:
         String[] yearList = Arrays.copyOf(temp, temp.length, String[].class);
-        //System.out.println(Arrays.toString(yearList));
         return yearList;
     }
 
-    //@Override
+    @Override
     public void soldCar(int price, int year, String model) {
         HondaCar car = new HondaCar();
         car.setModel(model);
         car.setPrice(price);
         car.setYear(year);
-
         cars.add(car);
 
         try {

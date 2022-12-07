@@ -8,6 +8,7 @@ public class HondaCar implements VehicleBuild{
         this.price = price;
         this.model = model;
     }
+
     public HondaCar(){}
 
     public void setYear(int y){
@@ -34,5 +35,4 @@ public class HondaCar implements VehicleBuild{
     public String getModel() {
         return model;
     }
-
 }

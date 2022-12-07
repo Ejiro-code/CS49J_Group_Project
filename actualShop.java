@@ -220,6 +220,7 @@ public class actualShop implements ActionListener {
         submit.addActionListener(this);
 
 
+
         mainWin.add(y);
         mainWin.add(price);
         mainWin.add(model);
@@ -275,6 +276,8 @@ public class actualShop implements ActionListener {
         } else if (e.getSource() == sell) {
             submit.setEnabled(true);
             newCar();
+
+
         } else if (e.getSource() == rand) {
             randomCar();
         }
@@ -285,14 +288,19 @@ public class actualShop implements ActionListener {
             submit.setEnabled(false);
             if(carV == 0){
                 vehicle.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
+                cars = vehicle.allCars();
             }
             if (carV == 1) {
                 vehicle1.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
+                cars = vehicle1.allCars();
             }else if (carV == 2) {
                 vehicle2.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
+                cars = vehicle2.allCars();
             }else if (carV == 3) {
                 vehicle3.soldCar(Integer.valueOf(price.getText()),Integer.valueOf(y.getText()),model.getText());
+                cars = vehicle3.allCars();
             }
+
 
             JLabel submitted = new JLabel("Thank you");
             submitted.setBounds(20,100,60,30);

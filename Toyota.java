@@ -180,7 +180,8 @@ public class Toyota extends Vehicle{
         try {
             FileWriter fw = new FileWriter("toyota.txt",true);
             PrintWriter out = new PrintWriter(fw);
-            out.println(car1.getYear()+","+car1.getPrice()+","+car1.getModel());
+            out.println();
+            out.print(car1.getYear()+","+car1.getPrice()+","+car1.getModel());
             //it's important that you close the printWriter object
             out.close();
         } catch (IOException e) {
